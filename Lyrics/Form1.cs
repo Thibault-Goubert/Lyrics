@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Lyrics
 {
-
     public partial class Form1 : Form
     {
-        List<Tuple<string, string, string>> lDatas = new List<Tuple<string, string, string>>();
-         
+        List<Lyrics> lDatas = null;
+        FenetreAjouter formAjouter = null;
+        Lyrics activeLyrics = null;
+        string path = @"lyrics.xml";
+
         public Form1()
         {
             InitializeComponent();
@@ -23,45 +27,50 @@ namespace Lyrics
 
         private void SetLyricsDatas()
         {
-            lDatas.Add(new Tuple<string, string, string>("Test Title1",  "Test Name1",  "Test Lyrics1"));
-            lDatas.Add(new Tuple<string, string, string>("Test Title2",  "Test Name2",  "Test Lyrics2"));
-            lDatas.Add(new Tuple<string, string, string>("Test Title3",  "Test Name3",  "Test Lyrics3"));
-            lDatas.Add(new Tuple<string, string, string>("Test Title4",  "Test Name4",  "Test Lyrics4"));
-            lDatas.Add(new Tuple<string, string, string>("Test Title5",  "Test Name5",  "Test Lyrics5"));
-            lDatas.Add(new Tuple<string, string, string>("Test Title6",  "Test Name6",  "Test Lyrics6"));
-            lDatas.Add(new Tuple<string, string, string>("Test Title7",  "Test Name7",  "Test Lyrics7"));
-            lDatas.Add(new Tuple<string, string, string>("Test Title8",  "Test Name8",  "Test Lyrics8"));
-            lDatas.Add(new Tuple<string, string, string>("Test Title9",  "Test Name9",  "Test Lyrics9"));
-            lDatas.Add(new Tuple<string, string, string>("Test Title10", "Test Name10", "Test Lyrics10"));
+            try {
+                if (File.Exists(path))
+                {
+                    // Read data from XML
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Lyrics>));
+                    using (FileStream fs = File.OpenRead(path))
+                    {
+                        lDatas = (List<Lyrics>)serializer.Deserialize(fs);
+                    }
+                }
+                else
+                {
+                    lDatas = new List<Lyrics>();
+                }
+            }
+            catch (Exception e) {
+                MessageBox.Show(e.Message, "Read failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }   
+            
             SetComboBoxDatas();
         }
 
         private void SetComboBoxDatas()
         {            
             comboBox1.DataSource = lDatas;
-            comboBox1.DisplayMember = "Item1";
-            comboBox1.ValueMember = "Item2";
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "Title";
             comboBox1.DropDownStyle = ComboBoxStyle.DropDown;
             comboBox1.FormattingEnabled = true;
         }
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
+            if (lDatas.Count == 0) return;
+
             ComboBox cb = (ComboBox)sender;
+
             int idx = cb.SelectedIndex;
-
-            Tuple<string, string, string> tuple = lDatas[idx];
-
-            string strName = tuple.Item2.ToString();
-            textBox1.Text = strName;
-
-            string lyrics = tuple.Item3.ToString();
-            richTextBox1.Text = lyrics;
-        }
-
-        private void comboBox1_TextChanged(object sender, EventArgs e)
-        {
+            Lyrics lyrics = lDatas[idx];
             
+            textBox1.Text = lyrics.Title.ToString();
+            richTextBox1.Text = lyrics.Texte.ToString();
+
+            activeLyrics = lyrics;
         }
 
         private void comboBox1_TextUpdate(object sender, EventArgs e)
@@ -69,14 +78,51 @@ namespace Lyrics
             string filter = comboBox1.Text.ToLower();
 
             if (String.IsNullOrWhiteSpace(filter)) comboBox1.DataSource = lDatas;
-            else comboBox1.DataSource = lDatas.FindAll(i => i.Item1.ToLower().StartsWith(filter)).ToList();
+            else comboBox1.DataSource = lDatas.FindAll(i => i.Name.ToLower().StartsWith(filter)).ToList();
 
             comboBox1.DroppedDown = true;
-            //comboBox1.SelectedIndex = -1;
             comboBox1.Text = filter;
 
             comboBox1.SelectionStart = filter.Length;
             comboBox1.SelectionLength = 0;
+        }
+
+        private void btn_Ajouter_Click(object sender, EventArgs e)
+        {
+            if(formAjouter == null)
+            {
+                formAjouter = new FenetreAjouter(lDatas);
+                formAjouter.FormClosed += onFenetreAjouterClosed;
+                formAjouter.ShowDialog();
+            }
+        }
+
+        private void onFenetreAjouterClosed(object sender, EventArgs e)
+        {
+            SetComboBoxDatas();
+            formAjouter = null;
+        }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            activeLyrics.Texte = richTextBox1.Text;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                using (Stream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Lyrics>));
+                    serializer.Serialize(fs, lDatas);
+                }
+            }
+            catch (Exception ex)
+            {
+                DialogResult res = MessageBox.Show(ex.Message, "Save failed", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                if(res == DialogResult.Cancel) e.Cancel = true; 
+            }            
         }
     }
 }
