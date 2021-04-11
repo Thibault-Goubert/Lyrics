@@ -105,6 +105,7 @@ namespace Lyrics
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            if (activeLyrics == null) return;
             activeLyrics.Texte = rtb_Texte.Rtf;
         }
 
@@ -125,22 +126,36 @@ namespace Lyrics
             }            
         }
 
-        private void btn_Italic_Click(object sender, EventArgs e)
-        {
-            //Italic
-            rtb_Texte.SelectionFont = new Font(rtb_Texte.SelectionFont, FontStyle.Italic);
-        }
-
         private void btn_Bold_Click(object sender, EventArgs e)
         {
+            int idxStart = rtb_Texte.SelectionStart;
+            int selectLenght = rtb_Texte.SelectionLength;
+
             //Gras
-            rtb_Texte.SelectionColor = Color.Gray;
+            rtb_Texte.SelectionFont = (rtb_Texte.SelectionFont.Bold)?
+                new Font(rtb_Texte.SelectionFont, FontStyle.Regular) : new Font(rtb_Texte.SelectionFont, FontStyle.Bold);
+
+            rtb_Texte.Focus();
         }
 
         private void btn_Gray_Click(object sender, EventArgs e)
         {
+            int idxStart = rtb_Texte.SelectionStart;
+            int selectLenght = rtb_Texte.SelectionLength;
+
             //Gris
-            rtb_Texte.SelectionFont = new Font(rtb_Texte.SelectionFont, FontStyle.Bold);
+            rtb_Texte.SelectionColor = (rtb_Texte.SelectionColor.Equals(Color.Gray))?
+                Color.Black : Color.Gray;
+
+            rtb_Texte.Focus();
+        }
+
+        private void btn_Supprimer_Click(object sender, EventArgs e)
+        {
+            if (activeLyrics == null) return;
+
+            lDatas.Remove(activeLyrics);
+            activeLyrics = null;
         }
     }
 }

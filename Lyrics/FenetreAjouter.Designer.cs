@@ -38,7 +38,7 @@
             // lab_Titre
             // 
             this.lab_Titre.AutoSize = true;
-            this.lab_Titre.Location = new System.Drawing.Point(41, 69);
+            this.lab_Titre.Location = new System.Drawing.Point(18, 15);
             this.lab_Titre.Name = "lab_Titre";
             this.lab_Titre.Size = new System.Drawing.Size(28, 13);
             this.lab_Titre.TabIndex = 0;
@@ -47,7 +47,7 @@
             // lab_Nom
             // 
             this.lab_Nom.AutoSize = true;
-            this.lab_Nom.Location = new System.Drawing.Point(41, 26);
+            this.lab_Nom.Location = new System.Drawing.Point(18, 51);
             this.lab_Nom.Name = "lab_Nom";
             this.lab_Nom.Size = new System.Drawing.Size(29, 13);
             this.lab_Nom.TabIndex = 0;
@@ -55,21 +55,21 @@
             // 
             // tbx_Nom
             // 
-            this.tbx_Nom.Location = new System.Drawing.Point(82, 23);
+            this.tbx_Nom.Location = new System.Drawing.Point(59, 48);
             this.tbx_Nom.Name = "tbx_Nom";
             this.tbx_Nom.Size = new System.Drawing.Size(317, 20);
             this.tbx_Nom.TabIndex = 1;
             // 
             // tbx_Titre
             // 
-            this.tbx_Titre.Location = new System.Drawing.Point(82, 66);
+            this.tbx_Titre.Location = new System.Drawing.Point(59, 12);
             this.tbx_Titre.Name = "tbx_Titre";
             this.tbx_Titre.Size = new System.Drawing.Size(317, 20);
             this.tbx_Titre.TabIndex = 1;
             // 
             // btn_Valider
             // 
-            this.btn_Valider.Location = new System.Drawing.Point(418, 44);
+            this.btn_Valider.Location = new System.Drawing.Point(382, 29);
             this.btn_Valider.Name = "btn_Valider";
             this.btn_Valider.Size = new System.Drawing.Size(75, 23);
             this.btn_Valider.TabIndex = 2;
@@ -81,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 114);
+            this.ClientSize = new System.Drawing.Size(504, 89);
             this.Controls.Add(this.btn_Valider);
             this.Controls.Add(this.tbx_Titre);
             this.Controls.Add(this.tbx_Nom);
