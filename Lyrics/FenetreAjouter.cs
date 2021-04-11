@@ -12,9 +12,9 @@ namespace Lyrics
 {
     public partial class FenetreAjouter : Form
     {
-        List<Lyrics> Datas { get; set; }
+        BindingList<Lyrics> Datas { get; set; }
 
-        public FenetreAjouter(List<Lyrics> ldatas)
+        public FenetreAjouter(BindingList<Lyrics> ldatas)
         {
             InitializeComponent();
             Datas = ldatas;

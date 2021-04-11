@@ -14,7 +14,7 @@ namespace Lyrics
 {
     public partial class Form1 : Form
     {
-        List<Lyrics> lDatas = null;
+        BindingList<Lyrics> lDatas = null;
         FenetreAjouter formAjouter = null;
         Lyrics activeLyrics = null;
         string path = @"lyrics.xml";
@@ -34,12 +34,12 @@ namespace Lyrics
                     XmlSerializer serializer = new XmlSerializer(typeof(List<Lyrics>));
                     using (FileStream fs = File.OpenRead(path))
                     {
-                        lDatas = (List<Lyrics>)serializer.Deserialize(fs);
+                        lDatas = (BindingList<Lyrics>)serializer.Deserialize(fs);
                     }
                 }
                 else
                 {
-                    lDatas = new List<Lyrics>();
+                    lDatas = new BindingList<Lyrics>();
                 }
             }
             catch (Exception e) {
@@ -50,7 +50,7 @@ namespace Lyrics
         }
 
         private void SetComboBoxDatas()
-        {            
+        {
             cbx_Names.DataSource = lDatas;
             cbx_Names.DisplayMember = "Name";
             cbx_Names.ValueMember = "Title";
@@ -60,12 +60,14 @@ namespace Lyrics
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (lDatas.Count == 0) return;
-
-            ComboBox cb = (ComboBox)sender;
-
-            int idx = cb.SelectedIndex;
-            Lyrics lyrics = lDatas[idx];
+            if (lDatas.Count == 0)
+            {
+                tbx_Titre.Text = string.Empty;
+                rtb_Texte.Rtf = string.Empty;
+                return;
+            }
+            
+            Lyrics lyrics = lDatas[((ComboBox)sender).SelectedIndex];
             
             tbx_Titre.Text = lyrics.Title.ToString();
             rtb_Texte.Rtf = lyrics.Texte;
@@ -78,7 +80,7 @@ namespace Lyrics
             string filter = cbx_Names.Text.ToLower();
 
             if (String.IsNullOrWhiteSpace(filter)) cbx_Names.DataSource = lDatas;
-            else cbx_Names.DataSource = lDatas.FindAll(i => i.Name.ToLower().StartsWith(filter)).ToList();
+            else cbx_Names.DataSource = lDatas.Where(i => i.Name.ToLower().StartsWith(filter)).ToList();
 
             cbx_Names.DroppedDown = true;
             cbx_Names.Text = filter;
