@@ -51,11 +51,11 @@ namespace Lyrics
 
         private void SetComboBoxDatas()
         {            
-            comboBox1.DataSource = lDatas;
-            comboBox1.DisplayMember = "Name";
-            comboBox1.ValueMember = "Title";
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDown;
-            comboBox1.FormattingEnabled = true;
+            cbx_Names.DataSource = lDatas;
+            cbx_Names.DisplayMember = "Name";
+            cbx_Names.ValueMember = "Title";
+            cbx_Names.DropDownStyle = ComboBoxStyle.DropDown;
+            cbx_Names.FormattingEnabled = true;
         }
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
@@ -67,24 +67,24 @@ namespace Lyrics
             int idx = cb.SelectedIndex;
             Lyrics lyrics = lDatas[idx];
             
-            textBox1.Text = lyrics.Title.ToString();
-            richTextBox1.Text = lyrics.Texte.ToString();
+            tbx_Titre.Text = lyrics.Title.ToString();
+            rtb_Texte.Rtf = lyrics.Texte;
 
             activeLyrics = lyrics;
         }
 
         private void comboBox1_TextUpdate(object sender, EventArgs e)
         {
-            string filter = comboBox1.Text.ToLower();
+            string filter = cbx_Names.Text.ToLower();
 
-            if (String.IsNullOrWhiteSpace(filter)) comboBox1.DataSource = lDatas;
-            else comboBox1.DataSource = lDatas.FindAll(i => i.Name.ToLower().StartsWith(filter)).ToList();
+            if (String.IsNullOrWhiteSpace(filter)) cbx_Names.DataSource = lDatas;
+            else cbx_Names.DataSource = lDatas.FindAll(i => i.Name.ToLower().StartsWith(filter)).ToList();
 
-            comboBox1.DroppedDown = true;
-            comboBox1.Text = filter;
+            cbx_Names.DroppedDown = true;
+            cbx_Names.Text = filter;
 
-            comboBox1.SelectionStart = filter.Length;
-            comboBox1.SelectionLength = 0;
+            cbx_Names.SelectionStart = filter.Length;
+            cbx_Names.SelectionLength = 0;
         }
 
         private void btn_Ajouter_Click(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace Lyrics
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            activeLyrics.Texte = richTextBox1.Text;
+            activeLyrics.Texte = rtb_Texte.Rtf;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -123,6 +123,24 @@ namespace Lyrics
                 DialogResult res = MessageBox.Show(ex.Message, "Save failed", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                 if(res == DialogResult.Cancel) e.Cancel = true; 
             }            
+        }
+
+        private void btn_Italic_Click(object sender, EventArgs e)
+        {
+            //Italic
+            rtb_Texte.SelectionFont = new Font(rtb_Texte.SelectionFont, FontStyle.Italic);
+        }
+
+        private void btn_Bold_Click(object sender, EventArgs e)
+        {
+            //Gras
+            rtb_Texte.SelectionColor = Color.Gray;
+        }
+
+        private void btn_Gray_Click(object sender, EventArgs e)
+        {
+            //Gris
+            rtb_Texte.SelectionFont = new Font(rtb_Texte.SelectionFont, FontStyle.Bold);
         }
     }
 }

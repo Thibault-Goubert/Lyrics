@@ -30,15 +30,15 @@
         {
             this.lab_Titre = new System.Windows.Forms.Label();
             this.lab_Nom = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbx_Nom = new System.Windows.Forms.TextBox();
+            this.tbx_Titre = new System.Windows.Forms.TextBox();
             this.btn_Valider = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lab_Titre
             // 
             this.lab_Titre.AutoSize = true;
-            this.lab_Titre.Location = new System.Drawing.Point(41, 23);
+            this.lab_Titre.Location = new System.Drawing.Point(41, 69);
             this.lab_Titre.Name = "lab_Titre";
             this.lab_Titre.Size = new System.Drawing.Size(28, 13);
             this.lab_Titre.TabIndex = 0;
@@ -47,25 +47,25 @@
             // lab_Nom
             // 
             this.lab_Nom.AutoSize = true;
-            this.lab_Nom.Location = new System.Drawing.Point(41, 69);
+            this.lab_Nom.Location = new System.Drawing.Point(41, 26);
             this.lab_Nom.Name = "lab_Nom";
             this.lab_Nom.Size = new System.Drawing.Size(29, 13);
             this.lab_Nom.TabIndex = 0;
             this.lab_Nom.Text = "Nom";
             // 
-            // textBox1
+            // tbx_Nom
             // 
-            this.textBox1.Location = new System.Drawing.Point(82, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(317, 20);
-            this.textBox1.TabIndex = 1;
+            this.tbx_Nom.Location = new System.Drawing.Point(82, 23);
+            this.tbx_Nom.Name = "tbx_Nom";
+            this.tbx_Nom.Size = new System.Drawing.Size(317, 20);
+            this.tbx_Nom.TabIndex = 1;
             // 
-            // textBox2
+            // tbx_Titre
             // 
-            this.textBox2.Location = new System.Drawing.Point(82, 66);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(317, 20);
-            this.textBox2.TabIndex = 1;
+            this.tbx_Titre.Location = new System.Drawing.Point(82, 66);
+            this.tbx_Titre.Name = "tbx_Titre";
+            this.tbx_Titre.Size = new System.Drawing.Size(317, 20);
+            this.tbx_Titre.TabIndex = 1;
             // 
             // btn_Valider
             // 
@@ -83,8 +83,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(547, 114);
             this.Controls.Add(this.btn_Valider);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbx_Titre);
+            this.Controls.Add(this.tbx_Nom);
             this.Controls.Add(this.lab_Nom);
             this.Controls.Add(this.lab_Titre);
             this.Name = "FenetreAjouter";
@@ -98,8 +98,8 @@
 
         private System.Windows.Forms.Label lab_Titre;
         private System.Windows.Forms.Label lab_Nom;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbx_Nom;
+        private System.Windows.Forms.TextBox tbx_Titre;
         private System.Windows.Forms.Button btn_Valider;
     }
 }

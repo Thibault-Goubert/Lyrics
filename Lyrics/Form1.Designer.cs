@@ -28,38 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbx_Names = new System.Windows.Forms.ComboBox();
+            this.rtb_Texte = new System.Windows.Forms.RichTextBox();
+            this.tbx_Titre = new System.Windows.Forms.TextBox();
             this.btn_Ajouter = new System.Windows.Forms.Button();
             this.btn_Save = new System.Windows.Forms.Button();
+            this.btn_Italic = new System.Windows.Forms.Button();
+            this.btn_Bold = new System.Windows.Forms.Button();
+            this.btn_Gray = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cbx_Names
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(308, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.TextUpdate += new System.EventHandler(this.comboBox1_TextUpdate);
-            this.comboBox1.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
+            this.cbx_Names.FormattingEnabled = true;
+            this.cbx_Names.Location = new System.Drawing.Point(12, 12);
+            this.cbx_Names.Name = "cbx_Names";
+            this.cbx_Names.Size = new System.Drawing.Size(308, 21);
+            this.cbx_Names.TabIndex = 0;
+            this.cbx_Names.TextUpdate += new System.EventHandler(this.comboBox1_TextUpdate);
+            this.cbx_Names.SelectedValueChanged += new System.EventHandler(this.comboBox1_SelectedValueChanged);
             // 
-            // richTextBox1
+            // rtb_Texte
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(326, 39);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(462, 399);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.rtb_Texte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.rtb_Texte.Location = new System.Drawing.Point(326, 39);
+            this.rtb_Texte.Name = "rtb_Texte";
+            this.rtb_Texte.Size = new System.Drawing.Size(462, 399);
+            this.rtb_Texte.TabIndex = 1;
+            this.rtb_Texte.Text = "";
             // 
-            // textBox1
+            // tbx_Titre
             // 
-            this.textBox1.Location = new System.Drawing.Point(326, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(460, 20);
-            this.textBox1.TabIndex = 2;
+            this.tbx_Titre.Location = new System.Drawing.Point(326, 13);
+            this.tbx_Titre.Name = "tbx_Titre";
+            this.tbx_Titre.ReadOnly = true;
+            this.tbx_Titre.Size = new System.Drawing.Size(460, 20);
+            this.tbx_Titre.TabIndex = 2;
             // 
             // btn_Ajouter
             // 
@@ -81,16 +85,49 @@
             this.btn_Save.UseVisualStyleBackColor = true;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
+            // btn_Italic
+            // 
+            this.btn_Italic.Location = new System.Drawing.Point(291, 39);
+            this.btn_Italic.Name = "btn_Italic";
+            this.btn_Italic.Size = new System.Drawing.Size(29, 23);
+            this.btn_Italic.TabIndex = 5;
+            this.btn_Italic.Text = "I";
+            this.btn_Italic.UseVisualStyleBackColor = true;
+            this.btn_Italic.Click += new System.EventHandler(this.btn_Italic_Click);
+            // 
+            // btn_Bold
+            // 
+            this.btn_Bold.Location = new System.Drawing.Point(291, 68);
+            this.btn_Bold.Name = "btn_Bold";
+            this.btn_Bold.Size = new System.Drawing.Size(29, 23);
+            this.btn_Bold.TabIndex = 6;
+            this.btn_Bold.Text = "B";
+            this.btn_Bold.UseVisualStyleBackColor = true;
+            this.btn_Bold.Click += new System.EventHandler(this.btn_Bold_Click);
+            // 
+            // btn_Gray
+            // 
+            this.btn_Gray.Location = new System.Drawing.Point(291, 97);
+            this.btn_Gray.Name = "btn_Gray";
+            this.btn_Gray.Size = new System.Drawing.Size(29, 23);
+            this.btn_Gray.TabIndex = 7;
+            this.btn_Gray.Text = "G";
+            this.btn_Gray.UseVisualStyleBackColor = true;
+            this.btn_Gray.Click += new System.EventHandler(this.btn_Gray_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Gray);
+            this.Controls.Add(this.btn_Bold);
+            this.Controls.Add(this.btn_Italic);
             this.Controls.Add(this.btn_Save);
             this.Controls.Add(this.btn_Ajouter);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.tbx_Titre);
+            this.Controls.Add(this.rtb_Texte);
+            this.Controls.Add(this.cbx_Names);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -101,11 +138,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cbx_Names;
+        private System.Windows.Forms.RichTextBox rtb_Texte;
+        private System.Windows.Forms.TextBox tbx_Titre;
         private System.Windows.Forms.Button btn_Ajouter;
         private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.Button btn_Italic;
+        private System.Windows.Forms.Button btn_Bold;
+        private System.Windows.Forms.Button btn_Gray;
     }
 }
 
