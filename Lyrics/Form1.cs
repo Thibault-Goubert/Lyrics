@@ -22,7 +22,37 @@ namespace Lyrics
         public Form1()
         {
             InitializeComponent();
-            SetLyricsDatas();            
+            SetLyricsDatas();
+            lDatas.ListChanged += DatasChangeHandler;
+        }
+
+        private void DatasChangeHandler(object sender, ListChangedEventArgs e)
+        {
+            Lyrics lyrics = null;
+            if (e.ListChangedType == ListChangedType.ItemAdded)
+            {
+                lyrics = lDatas[e.NewIndex];
+                cbx_Names.SelectedIndex = e.NewIndex;
+            }
+            else if(e.ListChangedType == ListChangedType.ItemDeleted)
+            {
+                if (lDatas.Count == 0)
+                {
+                    tbx_Titre.Text = string.Empty;
+                    rtb_Texte.Rtf = string.Empty;
+                    activeLyrics = null;
+                    return;
+                }
+                else
+                {
+                    lyrics = lDatas[0];
+                    cbx_Names.SelectedIndex = 0;
+                }
+            }
+
+            tbx_Titre.Text = lyrics.Title.ToString();
+            rtb_Texte.Rtf = lyrics.Texte;
+            activeLyrics = lyrics;
         }
 
         private void SetLyricsDatas()
@@ -64,6 +94,7 @@ namespace Lyrics
             {
                 tbx_Titre.Text = string.Empty;
                 rtb_Texte.Rtf = string.Empty;
+                activeLyrics = null;
                 return;
             }
             
@@ -101,7 +132,6 @@ namespace Lyrics
 
         private void onFenetreAjouterClosed(object sender, EventArgs e)
         {
-            SetComboBoxDatas();
             formAjouter = null;
         }
 
@@ -155,9 +185,10 @@ namespace Lyrics
         private void btn_Supprimer_Click(object sender, EventArgs e)
         {
             if (activeLyrics == null) return;
-
-            lDatas.Remove(activeLyrics);
-            activeLyrics = null;
+            DialogResult res = MessageBox.Show($"Supprimer {activeLyrics.Name} ?", "Read failed", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (res==DialogResult.OK){
+                lDatas.Remove(activeLyrics);
+            }
         }
     }
 }
