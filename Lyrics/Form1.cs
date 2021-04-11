@@ -61,7 +61,7 @@ namespace Lyrics
                 if (File.Exists(path))
                 {
                     // Read data from XML
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Lyrics>));
+                    XmlSerializer serializer = new XmlSerializer(typeof(BindingList<Lyrics>));
                     using (FileStream fs = File.OpenRead(path))
                     {
                         lDatas = (BindingList<Lyrics>)serializer.Deserialize(fs);
@@ -74,7 +74,7 @@ namespace Lyrics
             }
             catch (Exception e) {
                 MessageBox.Show(e.Message, "Read failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }   
+            }
             
             SetComboBoxDatas();
         }
@@ -147,7 +147,7 @@ namespace Lyrics
             {
                 using (Stream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Lyrics>));
+                    XmlSerializer serializer = new XmlSerializer(typeof(BindingList<Lyrics>));
                     serializer.Serialize(fs, lDatas);
                 }
             }
