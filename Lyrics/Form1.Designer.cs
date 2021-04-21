@@ -36,6 +36,7 @@
             this.btn_Bold = new System.Windows.Forms.Button();
             this.btn_Gray = new System.Windows.Forms.Button();
             this.btn_Supprimer = new System.Windows.Forms.Button();
+            this.tbx_Link = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cbx_Names
@@ -123,11 +124,21 @@
             this.btn_Supprimer.UseVisualStyleBackColor = true;
             this.btn_Supprimer.Click += new System.EventHandler(this.btn_Supprimer_Click);
             // 
+            // tbx_Link
+            // 
+            this.tbx_Link.Location = new System.Drawing.Point(12, 39);
+            this.tbx_Link.Name = "tbx_Link";
+            this.tbx_Link.ReadOnly = true;
+            this.tbx_Link.Size = new System.Drawing.Size(308, 20);
+            this.tbx_Link.TabIndex = 9;
+            this.tbx_Link.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbx_Link_MouseDoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tbx_Link);
             this.Controls.Add(this.btn_Supprimer);
             this.Controls.Add(this.btn_Gray);
             this.Controls.Add(this.btn_Bold);
@@ -154,6 +165,7 @@
         private System.Windows.Forms.Button btn_Bold;
         private System.Windows.Forms.Button btn_Gray;
         private System.Windows.Forms.Button btn_Supprimer;
+        private System.Windows.Forms.TextBox tbx_Link;
     }
 }
 

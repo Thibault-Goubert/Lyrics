@@ -22,7 +22,7 @@ namespace Lyrics
 
         private void btn_Valider_Click(object sender, EventArgs e)
         {
-            Lyrics newLyrics = new Lyrics(tbx_Nom.Text, tbx_Titre.Text, string.Empty);
+            Lyrics newLyrics = new Lyrics(tbx_Nom.Text, tbx_Titre.Text, string.Empty, tbx_Link.Text);
             Datas.Add(newLyrics);
             this.Close();
         }

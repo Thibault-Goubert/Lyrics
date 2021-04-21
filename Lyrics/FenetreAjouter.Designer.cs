@@ -33,6 +33,8 @@
             this.tbx_Nom = new System.Windows.Forms.TextBox();
             this.tbx_Titre = new System.Windows.Forms.TextBox();
             this.btn_Valider = new System.Windows.Forms.Button();
+            this.lab_Link = new System.Windows.Forms.Label();
+            this.tbx_Link = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lab_Titre
@@ -69,21 +71,39 @@
             // 
             // btn_Valider
             // 
-            this.btn_Valider.Location = new System.Drawing.Point(382, 29);
+            this.btn_Valider.Location = new System.Drawing.Point(400, 12);
             this.btn_Valider.Name = "btn_Valider";
-            this.btn_Valider.Size = new System.Drawing.Size(75, 23);
+            this.btn_Valider.Size = new System.Drawing.Size(75, 92);
             this.btn_Valider.TabIndex = 2;
             this.btn_Valider.Text = "Valider";
             this.btn_Valider.UseVisualStyleBackColor = true;
             this.btn_Valider.Click += new System.EventHandler(this.btn_Valider_Click);
             // 
+            // lab_Link
+            // 
+            this.lab_Link.AutoSize = true;
+            this.lab_Link.Location = new System.Drawing.Point(18, 87);
+            this.lab_Link.Name = "lab_Link";
+            this.lab_Link.Size = new System.Drawing.Size(27, 13);
+            this.lab_Link.TabIndex = 0;
+            this.lab_Link.Text = "Link";
+            // 
+            // tbx_Link
+            // 
+            this.tbx_Link.Location = new System.Drawing.Point(59, 84);
+            this.tbx_Link.Name = "tbx_Link";
+            this.tbx_Link.Size = new System.Drawing.Size(317, 20);
+            this.tbx_Link.TabIndex = 1;
+            // 
             // FenetreAjouter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 89);
+            this.ClientSize = new System.Drawing.Size(504, 127);
             this.Controls.Add(this.btn_Valider);
             this.Controls.Add(this.tbx_Titre);
+            this.Controls.Add(this.tbx_Link);
+            this.Controls.Add(this.lab_Link);
             this.Controls.Add(this.tbx_Nom);
             this.Controls.Add(this.lab_Nom);
             this.Controls.Add(this.lab_Titre);
@@ -101,5 +121,7 @@
         private System.Windows.Forms.TextBox tbx_Nom;
         private System.Windows.Forms.TextBox tbx_Titre;
         private System.Windows.Forms.Button btn_Valider;
+        private System.Windows.Forms.Label lab_Link;
+        private System.Windows.Forms.TextBox tbx_Link;
     }
 }

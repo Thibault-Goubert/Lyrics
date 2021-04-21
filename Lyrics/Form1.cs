@@ -29,6 +29,7 @@ namespace Lyrics
         private void DatasChangeHandler(object sender, ListChangedEventArgs e)
         {
             Lyrics lyrics = null;
+
             if (e.ListChangedType == ListChangedType.ItemAdded)
             {
                 lyrics = lDatas[e.NewIndex];
@@ -41,6 +42,7 @@ namespace Lyrics
                     tbx_Titre.Text = string.Empty;
                     rtb_Texte.Rtf = string.Empty;
                     activeLyrics = null;
+                    tbx_Link.Text = string.Empty;
                     return;
                 }
                 else
@@ -53,6 +55,7 @@ namespace Lyrics
             tbx_Titre.Text = lyrics.Title.ToString();
             rtb_Texte.Rtf = lyrics.Texte;
             activeLyrics = lyrics;
+            tbx_Link.Text = lyrics.Link;
         }
 
         private void SetLyricsDatas()
@@ -94,6 +97,7 @@ namespace Lyrics
             {
                 tbx_Titre.Text = string.Empty;
                 rtb_Texte.Rtf = string.Empty;
+                tbx_Link.Text = string.Empty;
                 activeLyrics = null;
                 return;
             }
@@ -102,6 +106,7 @@ namespace Lyrics
             
             tbx_Titre.Text = lyrics.Title.ToString();
             rtb_Texte.Rtf = lyrics.Texte;
+            tbx_Link.Text = lyrics.Link;
 
             activeLyrics = lyrics;
         }
@@ -189,6 +194,13 @@ namespace Lyrics
             if (res==DialogResult.OK){
                 lDatas.Remove(activeLyrics);
             }
+        }
+
+        private void tbx_Link_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string link = ((TextBox)sender).Text;
+            //Vérifier que ce soit bien un lien (yt ?)
+            System.Diagnostics.Process.Start(link);
         }
     }
 }
