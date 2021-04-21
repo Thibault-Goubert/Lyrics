@@ -128,7 +128,6 @@
             // 
             this.tbx_Link.Location = new System.Drawing.Point(12, 39);
             this.tbx_Link.Name = "tbx_Link";
-            this.tbx_Link.ReadOnly = true;
             this.tbx_Link.Size = new System.Drawing.Size(308, 20);
             this.tbx_Link.TabIndex = 9;
             this.tbx_Link.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbx_Link_MouseDoubleClick);

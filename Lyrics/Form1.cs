@@ -144,13 +144,15 @@ namespace Lyrics
         {
             if (activeLyrics == null) return;
             activeLyrics.Texte = rtb_Texte.Rtf;
+            activeLyrics.Link = tbx_Link.Text;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
-                using (Stream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
+                File.Delete(path);
+                using (Stream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(BindingList<Lyrics>));
                     serializer.Serialize(fs, lDatas);
@@ -198,9 +200,16 @@ namespace Lyrics
 
         private void tbx_Link_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            string link = ((TextBox)sender).Text;
-            //Vérifier que ce soit bien un lien (yt ?)
-            System.Diagnostics.Process.Start(link);
+            try
+            {
+                string link = ((TextBox)sender).Text;
+                //Vérifier que ce soit bien un lien (yt ?)
+                System.Diagnostics.Process.Start(link);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Can't open link", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
