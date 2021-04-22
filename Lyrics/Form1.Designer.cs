@@ -37,6 +37,7 @@
             this.btn_Gray = new System.Windows.Forms.Button();
             this.btn_Supprimer = new System.Windows.Forms.Button();
             this.tbx_Link = new System.Windows.Forms.TextBox();
+            this.btn_Link = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cbx_Names
@@ -116,7 +117,7 @@
             // btn_Supprimer
             // 
             this.btn_Supprimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn_Supprimer.Location = new System.Drawing.Point(12, 386);
+            this.btn_Supprimer.Location = new System.Drawing.Point(93, 415);
             this.btn_Supprimer.Name = "btn_Supprimer";
             this.btn_Supprimer.Size = new System.Drawing.Size(75, 23);
             this.btn_Supprimer.TabIndex = 8;
@@ -126,17 +127,30 @@
             // 
             // tbx_Link
             // 
+            this.tbx_Link.Enabled = false;
             this.tbx_Link.Location = new System.Drawing.Point(12, 39);
             this.tbx_Link.Name = "tbx_Link";
             this.tbx_Link.Size = new System.Drawing.Size(308, 20);
             this.tbx_Link.TabIndex = 9;
-            this.tbx_Link.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tbx_Link_MouseDoubleClick);
+            this.tbx_Link.Visible = false;
+            this.tbx_Link.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tbx_Link_MouseDown);
+            // 
+            // btn_Link
+            // 
+            this.btn_Link.Location = new System.Drawing.Point(12, 37);
+            this.btn_Link.Name = "btn_Link";
+            this.btn_Link.Size = new System.Drawing.Size(308, 23);
+            this.btn_Link.TabIndex = 10;
+            this.btn_Link.Text = "Lien";
+            this.btn_Link.UseVisualStyleBackColor = true;
+            this.btn_Link.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_Link_MouseDown);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_Link);
             this.Controls.Add(this.tbx_Link);
             this.Controls.Add(this.btn_Supprimer);
             this.Controls.Add(this.btn_Gray);
@@ -165,6 +179,7 @@
         private System.Windows.Forms.Button btn_Gray;
         private System.Windows.Forms.Button btn_Supprimer;
         private System.Windows.Forms.TextBox tbx_Link;
+        private System.Windows.Forms.Button btn_Link;
     }
 }
 

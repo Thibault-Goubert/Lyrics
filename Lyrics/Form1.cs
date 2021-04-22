@@ -198,17 +198,57 @@ namespace Lyrics
             }
         }
 
-        private void tbx_Link_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void tbx_Link_MouseDown(object sender, MouseEventArgs e)
         {
-            try
+            if (e.Button == MouseButtons.Right)
             {
-                string link = ((TextBox)sender).Text;
-                //Vérifier que ce soit bien un lien (yt ?)
-                System.Diagnostics.Process.Start(link);
+                SwitchLinkDisplay();
             }
-            catch(Exception ex)
+        }
+
+        private void btn_Link_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
             {
-                MessageBox.Show($"{ex.Message}", "Can't open link", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SwitchLinkDisplay();
+            }
+            else if(e.Button == MouseButtons.Left)
+            {
+                try
+                {
+                    string link = tbx_Link.Text;
+                    //Vérifier que ce soit bien un lien (yt ?)
+                    System.Diagnostics.Process.Start(link);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}", "Can't open link", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void SwitchLinkDisplay()
+        {
+            if (btn_Link.Visible)
+            {
+                btn_Link.Visible = false;
+                btn_Link.Enabled = false;
+            }
+            else
+            {
+                btn_Link.Visible = true;
+                btn_Link.Enabled = true;
+            }
+
+            if (tbx_Link.Visible)
+            {
+                tbx_Link.Visible = false;
+                tbx_Link.Enabled = false;
+            }
+            else
+            {
+                tbx_Link.Visible = true;
+                tbx_Link.Enabled = true;
             }
         }
     }

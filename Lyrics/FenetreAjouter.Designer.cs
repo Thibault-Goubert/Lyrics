@@ -40,7 +40,7 @@
             // lab_Titre
             // 
             this.lab_Titre.AutoSize = true;
-            this.lab_Titre.Location = new System.Drawing.Point(18, 15);
+            this.lab_Titre.Location = new System.Drawing.Point(29, 55);
             this.lab_Titre.Name = "lab_Titre";
             this.lab_Titre.Size = new System.Drawing.Size(28, 13);
             this.lab_Titre.TabIndex = 0;
@@ -49,7 +49,7 @@
             // lab_Nom
             // 
             this.lab_Nom.AutoSize = true;
-            this.lab_Nom.Location = new System.Drawing.Point(18, 51);
+            this.lab_Nom.Location = new System.Drawing.Point(29, 29);
             this.lab_Nom.Name = "lab_Nom";
             this.lab_Nom.Size = new System.Drawing.Size(29, 13);
             this.lab_Nom.TabIndex = 0;
@@ -57,23 +57,23 @@
             // 
             // tbx_Nom
             // 
-            this.tbx_Nom.Location = new System.Drawing.Point(59, 48);
+            this.tbx_Nom.Location = new System.Drawing.Point(70, 26);
             this.tbx_Nom.Name = "tbx_Nom";
             this.tbx_Nom.Size = new System.Drawing.Size(317, 20);
             this.tbx_Nom.TabIndex = 1;
             // 
             // tbx_Titre
             // 
-            this.tbx_Titre.Location = new System.Drawing.Point(59, 12);
+            this.tbx_Titre.Location = new System.Drawing.Point(70, 52);
             this.tbx_Titre.Name = "tbx_Titre";
             this.tbx_Titre.Size = new System.Drawing.Size(317, 20);
             this.tbx_Titre.TabIndex = 1;
             // 
             // btn_Valider
             // 
-            this.btn_Valider.Location = new System.Drawing.Point(400, 12);
+            this.btn_Valider.Location = new System.Drawing.Point(393, 26);
             this.btn_Valider.Name = "btn_Valider";
-            this.btn_Valider.Size = new System.Drawing.Size(75, 92);
+            this.btn_Valider.Size = new System.Drawing.Size(75, 72);
             this.btn_Valider.TabIndex = 2;
             this.btn_Valider.Text = "Valider";
             this.btn_Valider.UseVisualStyleBackColor = true;
@@ -82,7 +82,7 @@
             // lab_Link
             // 
             this.lab_Link.AutoSize = true;
-            this.lab_Link.Location = new System.Drawing.Point(18, 87);
+            this.lab_Link.Location = new System.Drawing.Point(29, 81);
             this.lab_Link.Name = "lab_Link";
             this.lab_Link.Size = new System.Drawing.Size(27, 13);
             this.lab_Link.TabIndex = 0;
@@ -90,7 +90,7 @@
             // 
             // tbx_Link
             // 
-            this.tbx_Link.Location = new System.Drawing.Point(59, 84);
+            this.tbx_Link.Location = new System.Drawing.Point(70, 78);
             this.tbx_Link.Name = "tbx_Link";
             this.tbx_Link.Size = new System.Drawing.Size(317, 20);
             this.tbx_Link.TabIndex = 1;
@@ -107,6 +107,7 @@
             this.Controls.Add(this.tbx_Nom);
             this.Controls.Add(this.lab_Nom);
             this.Controls.Add(this.lab_Titre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FenetreAjouter";
             this.Text = "FenetreAjouter";
             this.ResumeLayout(false);
